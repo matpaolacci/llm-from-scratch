@@ -1,5 +1,5 @@
 import torch
-from your_module import SelfAttention  # cambia con il path corretto
+from models.self_attention import SelfAttention
 
 
 def test_self_attention_forward_shapes():
