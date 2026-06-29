@@ -1,5 +1,4 @@
 import torch
-import math
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -33,7 +32,7 @@ class SelfAttention(nn.Module):
         scores = Q @ K.transpose(-2, -1)
 
         # Scaling
-        scores = scores / math.sqrt(K.size(-1))
+        scores = scores / torch.sqrt(K.size(-1))
 
         # Causal masking: blocks attention to future positions by setting upper-triangular
         # scores to -inf before softmax, enforcing left-to-right autoregressive attention.
