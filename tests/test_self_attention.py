@@ -1,6 +1,5 @@
 import torch
-from models.self_attention import SelfAttention
-
+from model.self_attention import SelfAttention
 
 def test_self_attention_forward_shapes():
     """
