@@ -1,4 +1,5 @@
 import torch
+import math
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -26,11 +27,11 @@ class SelfAttention(nn.Module):
         # (B, N, N)
 
         # Scaling
-        scores = scores / (K.size(-1) ** 0.5)
+        scores = scores / math.sqrt(K.size(-1))
 
         # Casual mask
         scores = Q @ K.transpose(-2, -1)   # QK^T
-        scores = scores / sqrt(d_k)
+        scores = scores / math.sqrt(d_k)
 
         # Softmax (B, N, N)
         attention = F.softmax(scores, dim=-1)
