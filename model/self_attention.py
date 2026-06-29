@@ -38,7 +38,7 @@ class SelfAttention(nn.Module):
         # Causal masking: blocks attention to future positions by setting upper-triangular
         # scores to -inf before softmax, enforcing left-to-right autoregressive attention.
         scores = scores.masked_fill(
-            ~self.mask[:N, :N],
+            ~self.attention_mask[:N, :N],
             float("-inf")
         )
 
